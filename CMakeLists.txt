@@ -40,13 +40,14 @@ if(BUILD_LOG)
 endif(BUILD_LOG)
 
 set(
-    manifold_SRC
+    manifoldplus_SRC
     src/GridIndex.h
     src/Intersection.h
     src/Intersection.cc
     src/IO.h
     src/IO.cc
-    src/main.cc
+    src/objProcessor.h
+    src/objProcessor.cc
     src/Manifold.h
     src/Manifold.cc
     src/MeshProjector.cc
@@ -58,11 +59,16 @@ set(
     src/types.h
 )
 
-add_executable(
-    manifold
-    ${manifold_SRC}
-)
+# Created static library and removed executable - Doncey A.
+add_library(manifoldplus STATIC ${manifoldplus_SRC})
 
-target_link_libraries(
-    manifold
-)
+#add_executable(
+#    manifoldplus
+#    ${manifoldplus_SRC}
+#)
+
+target_link_libraries(manifoldplus PUBLIC Eigen3::Eigen)
+
+#target_link_libraries(
+#   manifoldplus
+#)

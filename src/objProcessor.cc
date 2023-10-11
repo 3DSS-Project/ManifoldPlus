@@ -6,7 +6,10 @@
 #include "Parser.h"
 #include "types.h"
 
-int main(int argc, char**argv) {
+#include "ObjProcessor.h" // New header added by Doncey A.
+
+// Refactored main to be process_obj function
+int process_obj(int argc, char**argv) {
 	Parser parser;
 	parser.AddArgument("input", "../examples/input.obj");
 	parser.AddArgument("output", "../examples/output.obj");
@@ -25,7 +28,7 @@ int main(int argc, char**argv) {
 	Manifold manifold;
 	manifold.ProcessManifold(V, F, depth, &out_V, &out_F);
 
-	WriteOBJ(parser["output"].c_str(), out_V, out_F);
+	WriteOFF(parser["output"].c_str(), out_V, out_F);
 
 	return 0;
 }
