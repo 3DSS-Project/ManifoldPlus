@@ -53,3 +53,25 @@ void WriteOBJ(const char* filename, const MatrixD& V, const MatrixI& F) {
 	}
 	os.close();
 }
+
+void WriteOFF(const char* filename, const MatrixD& V, const MatrixI& F) {
+    std::ofstream os(filename);
+    
+    // Write the header
+    os << "OFF\n";
+    os << V.rows() << " " << F.rows() << " 0\n"; // vertices, faces, edges (edges are usually left as 0)
+
+    // Write the vertices
+    for (int i = 0; i < V.rows(); ++i) {
+        auto& v = V.row(i);
+        os << v[0] << " " << v[1] << " " << v[2] << "\n";
+    }
+
+    // Write the faces (each face starts with the number of vertices, which is 3 for triangles)
+    for (int i = 0; i < F.rows(); ++i) {
+        auto& f = F.row(i);
+        os << "3 " << f[0] << " " << f[1] << " " << f[2] << "\n";
+    }
+
+    os.close();
+}

@@ -6,4 +6,7 @@
 void ReadOBJ(const char* filename, MatrixD* V, MatrixI* F);
 void WriteOBJ(const char* filename, const MatrixD& V, const MatrixI& F);
 
+// Added by Doncey A.
+void WriteOFF(const char* filename, const MatrixD& V, const MatrixI& F);
+
 #endif
