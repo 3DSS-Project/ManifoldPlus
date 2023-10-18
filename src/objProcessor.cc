@@ -6,7 +6,7 @@
 #include "Parser.h"
 #include "types.h"
 
-#include "ObjProcessor.h" // New header added by Doncey A.
+#include "objProcessor.h" // New header added by Doncey A.
 
 // Refactored main to be process_obj function
 int process_obj(int argc, char**argv) {
